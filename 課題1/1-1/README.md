@@ -2,58 +2,51 @@
 →JDKのディレクトリ構成について調べる
 
 
-JDKの構成調査について
+## JDKの構成調査について
 
 参照:
-https://docs.oracle.com/javase/jp/11/install/installed-directory-structure-jdk.html#GUID-F7178F2F-DC92-47E9-8062-CA6B2612D350
+<https://docs.oracle.com/javase/jp/11/install/installed-directory-structure-jdk.html#GUID-F7178F2F-DC92-47E9-8062-CA6B2612D350>
 
 
-JDKは次の６つで構成されている
-bin
-conf
-include
-jmods
-legal
-lib
+*JDKは次の６つで構成されている*
+* bin
+* conf
+* include
+* jmods
+* legal
+* lib
 
 
+# bin:開発ツールの基本的なバイナリファイル(実行ファイルなど)を格納するディレクトリ
 
-bin
-開発ツールの基本的なバイナリファイル(実行ファイルなど)を格納するディレクトリ
-
-conf
-.propertiesファイル、.policyファイル、および開発や展開を行うユーザーやエンド・ユーザーが編集する
+# conf:.propertiesファイル、.policyファイル、および開発や展開を行うユーザーやエンド・ユーザーが編集する
 
 .propertiesファイル：
 Javaには定数などの規定値や、プログラムから読み込むファイルのパスを記載
 .policyファイル：指定されたコードソースからのコードに対し、どのアクセス権が許可されているかを示す
 
-include 
-Java Native Interface (JNI) および Java Virtual Machine Debugger Interface (JVMDI) を使用するネイティブコードのプログラミングをサポートするC 言語ヘッダーファイル
+# include: Java Native Interface (JNI) および Java Virtual Machine Debugger Interface (JVMDI) を使用するネイティブコードのプログラミングをサポートするC 言語ヘッダーファイル
 
-Java Native Interface (JNI)
+Java Native Interface (JNI):
 Javaで記述されたプログラムと、他のプログラミング言語（たとえばCやC++など）で書かれた、実際のCPU上で動作するコード（ネイティブコード）とを連携するためのインタフェース
 
-Java Virtual Machine Debugger Interface (JVMDI)
+Java Virtual Machine Debugger Interface (JVMDI):
 デバッガやその他のプログラミングツールにより使用されるプログラミングインタフェース
 
-
-ヘッダーファイル
+ヘッダーファイル:
 プログラムのソースコードの一部であり、そのプログラムにおいて使用される変数や定数、関数、その他あらかじめ宣言する必要があるデータ・命令の宣言を記述した文書ファイル
 
 
-jmods
-コンパイルされたモジュールを定義。
+# jmods:コンパイルされたモジュールを定義。
 
+モジュール:
 ハードウェアやソフトウェアにおける、ひとまとまりの機能・要素のことである。
 モジュールは、ハードウェアにおいては、細かい部品を組み合わせて、ある機能を実現するひとまとまりの部品を指す場合に用いる。
 ソフトウェアにおいては、ある機能を実現するプログラムの塊を指す場合に用いる。
 
 
-legal
-各モジュールの著作権、ライセンス関連のディレクトリ
+# legal:各モジュールの著作権、ライセンス関連のディレクトリ
 
 
 
-lib
-開発ツールによって使用されるファイル用のディレクトリ
+# lib:開発ツールによって使用されるファイル用のディレクトリ
