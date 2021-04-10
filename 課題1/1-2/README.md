@@ -3,5 +3,5 @@
 
 
 ## 詳細
-Googleスプレッドシート
+Googleスプレッドシート  
 <https://docs.google.com/spreadsheets/d/112RGbgS5TYVss1l0GAdPRMGLrfoWsS1BUvjfuci4SME/edit?usp=sharing>
