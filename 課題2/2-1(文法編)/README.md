@@ -1,9 +1,9 @@
-**①問題2-1 Javaの演習問題：文法編**
+## ①問題2-1 Javaの演習問題：文法編
 
 解答方法
 入力値は問題で定められた規則に従い、正しく入力されるものとし、入力ミスなどは考慮しなくてよい。
 
-1.（起動パラメータ）Kadai1.java
+1. （起動パラメータ）Kadai1.java
 起動パラメータに指定された引数をすべて表示するプログラムを作成しなさい
 
 ・最初に、引数の個数を出力する。
@@ -19,7 +19,7 @@ java Man ABC あいうえお 12345
 3番目の引数は「12345」です。
 
 
-1.（例外）Kadai2.java
+1. （例外）Kadai2.java
 プログラム中で、以下の例外を発生させる処理を記述し、その例外の詳細情報は出力しなさい。
 
 ・Null参照によるNullPointerException
@@ -36,7 +36,7 @@ java.lang.ClassCastException: java.lang.String cannot be cast to java.lang.Integ
     at Main.main(Main.java:21)
  
 
-1.（static、ジェネリクス、アノテーション）Kadai3.java
+1. （static、ジェネリクス、アノテーション）Kadai3.java
 起動パラメータに指定された引数配列に対し、
 
 ・List型の変数に格納する
