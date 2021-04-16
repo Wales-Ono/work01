@@ -13,8 +13,8 @@ public class Kadai2{
             e.printStackTrace();
        }
        try{
-            Object obj = new String[]{"Hello","World"};
-            Integer intObj = (Integer) obj;
+            Object obj = "Hello World"; //Object型の変数の値は代入できる
+            Integer intObj = (Integer) obj; //String型からInteger型はキャストできない
         }catch(ClassCastException e){
             e.printStackTrace();
        }
