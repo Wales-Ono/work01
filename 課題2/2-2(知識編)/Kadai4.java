@@ -34,7 +34,7 @@ public class Kadai4{
 
 
             //-------key「TOKYO」の値を出力する------------
-            String value = map.get("TOKYO");
+            String value = map.get("TOKYO");    //"TOKYO"というキーに対応するvalueを返す
             System.out.println("TOKYO=> " + value);
 
         }catch(FileNotFoundException e){
