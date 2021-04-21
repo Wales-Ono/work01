@@ -11,8 +11,8 @@ public class Kadai2{
             System.out.println(args[10]);
         }catch(ArrayIndexOutOfBoundsException e){
             e.printStackTrace();
-       }
-       try{
+        }
+        try{
             Object obj = "Hello World"; //Object型の変数の値は代入できる
             Integer intObj = (Integer) obj; //String型からInteger型はキャストできない
         }catch(ClassCastException e){

@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.Comparator;
 
-
-
 public class Kadai5{
     public static void main(String[] args){        
         Map<String,String> map = new TreeMap<>(); //TreeMapで自然順序付け
