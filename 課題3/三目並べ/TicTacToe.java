@@ -35,18 +35,18 @@ public class TicTacToe{
         System.out.println("--------------------------------------------------------------------------------------------------");
 
         //先攻後攻をランダムで決める
-        String senkoName,koukoName;
+        String senko,kouko;
         Random random = new Random(); //Randomクラスをnewする
         int ran = random.nextInt(2); //0 か 1 を生成する
         if(ran == 0){ //生成された数字が 0 のときは1人目に入力した人が先攻、2人目に入力した人が後攻
-            senkoName = names[0];
-            koukoName = names[1];
+            senko = names[0];
+            kouko = names[1];
         }else{ //生成された数字が 1 のときは1人目に入力した人が後攻、2人目に入力した人が先攻
-            senkoName = names[1];
-            koukoName = names[0];
+            senko = names[1];
+            kouko = names[0];
         }
-        System.out.println("先攻(○)：" + senkoName + "さん");
-        System.out.println("後攻(●)：" + koukoName + "さん");
+        System.out.println("先攻(○)：" + senko + "さん");
+        System.out.println("後攻(●)：" + kouko + "さん");
         System.out.println("順番は以上のように決定しました。 [Enterで次へ]");
         scanner.nextLine();
         System.out.println("--------------------------------------------------------------------------------------------------");
@@ -65,7 +65,7 @@ public class TicTacToe{
         System.out.println("--------------------------------------------------------------------------------------------------");
 
         //ゲーム開始
-        String[][] boards = new String[3][3]; //3×3 のString型の二次元配列を作成し、その参照を boards　に代入する
+        String[][] boards = new String[3][3]; //3×3のString型の二次元配列を作成し、その参照を boards　に代入する
         for(int i = 0;i < boards.length;i++){
             for(int j = 0;j < boards[i].length;j++){
                 if(boards[i][j] == null){ 
@@ -75,30 +75,37 @@ public class TicTacToe{
         }
         boardDisp(boards); //最初の盤面を縦横 3×3 で表示
         System.out.println();
-        
         Scanner scanNum = new Scanner(System.in); //標準入力であるキーボードからの入力を受け取る Scanner クラスのインスタンスを作成
-        
-        while(true){ //勝敗が決まる or 引き分け　までループさせる        
+        while(true){ //勝敗が決まる or 引き分け　までループさせる
             //先攻
-            game(senkoName,scanNum,boards,"先攻","○");
+            int senkoNum = getNum("先攻",senko,scanNum); //入力された値を num に代入
+            System.out.println();
+            setMark(senkoNum,boards,"○"); //入力された値を基に、指定された盤面の位置に"○"を書き込む
+            boardDisp(boards); //現在の盤面を表示
+            System.out.println();
             if(isWinJudge(boards)){ //先攻勝利の場合
-                System.out.println(senkoName + "さんの勝利です！");
+                System.out.println(senko + "さんの勝利です！");
                 break;
             }
             if(isDrawJudge(boards)){ //引き分けの場合
                 System.out.println("引き分けです！");
                 break;
             }
+
             //後攻
-            game(koukoName,scanNum,boards,"後攻","●");
+            int koukoNum = getNum("後攻",kouko,scanNum);//入力された値を num に代入
+            System.out.println();
+            setMark(koukoNum,boards,"●"); //入力された値を基に、指定された盤面の位置に"●"を書き込む
+            boardDisp(boards); //現在の盤面を表示
+            System.out.println();
             if(isWinJudge(boards)){ //後攻勝利の場合
-                System.out.println(koukoName + "さんの勝利です！");
+                System.out.println(kouko + "さんの勝利です！");
                 break;
             }
             if(isDrawJudge(boards)){ //引き分けの場合
                 System.out.println("引き分けです！");
                 break;
-            }
+            }            
         }
     }
 
@@ -112,17 +119,46 @@ public class TicTacToe{
         System.out.println(boards[2][0] + "|" + boards[2][1] + "|" + boards[2][2]);
     }
 
-    //入力された数字をint型にして返すメソッド
-    static int getNum(Scanner scanNum){
+    //入力された数字を返すメソッド
+    static int getNum(String turn,String name,Scanner scanNum){ 
+        System.out.println("＜"+ turn + "：" + name +"さんのターン＞");
+        System.out.println("どこにマークを書き込みますか？数字を入力し、”Enter”を押してください。");
+        System.out.print(">");
         int num = Integer.parseInt(scanNum.next()); //入力された数字(String型)をint型にする
         return num; //入力された数字を返す
     }
 
     //盤面にマークを書き込むメソッド
-    static void setMark(int num,String[][] boards,String mark){ 
-        int i = (num - 1) / 3;
-        int j = num - 3 * i - 1;
-        boards[i][j] = mark;
+    static void setMark(int num,String[][] boards,String mark){
+        switch(num){ //数字に従い、引数で指定されたマークを書き込む
+            case 1:
+                boards[0][0] = mark; 
+                break;
+            case 2:
+                boards[0][1] = mark;
+                break;
+            case 3:
+                boards[0][2] = mark;
+                break;
+            case 4:
+                boards[1][0] = mark;
+                break;
+            case 5:
+                boards[1][1] = mark;
+                break;
+            case 6:
+                boards[1][2] = mark;
+                break;
+            case 7:
+                boards[2][0] = mark;
+                break;
+            case 8:
+                boards[2][1] = mark;
+                break;
+            case 9:
+                boards[2][2] = mark;
+                break;
+        }
     }
 
     //どちらかが勝利(同じマークが3つ並ぶ)したら true を返すメソッド
@@ -160,39 +196,6 @@ public class TicTacToe{
             return true;
         }else{
             return false;
-        }
-    }
-
-    static void game(String name,Scanner scanNum,String[][] boards,String turn,String mark){
-        while(true){
-            System.out.println("＜"+ turn + "：" + name +"さんのターン＞");
-            System.out.println("どこにマークを書き込みますか？数字を入力し、”Enter”を押してください。");
-            System.out.print(">");
-            int intNum = getNum(scanNum); //入力された値をintに変換
-            int i = (intNum - 1) / 3;
-            int j = intNum - 3 * i - 1;
-            if(!(intNum == 1 || intNum == 2 || intNum == 3 || intNum == 4 || intNum == 5 || intNum == 6 || intNum == 7 || intNum == 8 || intNum == 9)){
-                System.out.println();
-                System.out.println("[1～9]以外が入力されました。もう一度正しい数字を入力してください。");
-                System.out.println();
-                continue;
-            }else if(boards[i][j] != "　"){
-                System.out.println();
-                System.out.println("すでに置かれています。もう一度正しい数字を入力してください。");
-                System.out.println();
-                continue;
-            }
-            System.out.println();
-            setMark(intNum,boards,mark); //入力された値を基に、指定された盤面の位置に"○"を書き込む
-            boardDisp(boards); //現在の盤面を表示
-            System.out.println();
-            if(!isWinJudge(boards)){ 
-                break;
-            }
-            if(!isDrawJudge(boards)){ 
-                break;
-            }
-
         }
     }
 }
