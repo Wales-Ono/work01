@@ -2,8 +2,6 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class MyFrame extends Frame{
-    Panel cardPanel;
-    CardLayout cardLayout;
     public static void main(String[] args) {
         // 大枠のフレームを作成
         MyFrame myFrame = new MyFrame();
@@ -25,12 +23,11 @@ public class MyFrame extends Frame{
         gamePanel.add("Center",centerPanel);
         gamePanel.add("South",southPanel);
 
-        cardPanel = new Panel();
-        cardLayout = new CardLayout();
+        Panel cardPanel = new Panel();
+        CardLayout cardLayout = new CardLayout();
         cardPanel.setLayout(cardLayout);
         cardPanel.add(titlePanel,"titlePanel");
         cardPanel.add(gamePanel,"gamePanel");
-
         this.add(cardPanel);
 
         addWindowListener(new MyWindowAdapter()); //リスナーで'×'が押されたか監視

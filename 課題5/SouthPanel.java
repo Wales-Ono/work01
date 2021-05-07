@@ -3,18 +3,21 @@ import java.awt.event.*;
 
 //リスナーインターフェースを実装
 public class SouthPanel extends Panel implements ActionListener{
-    Button button;
+    Button backBtn;
     public SouthPanel(){
         setLayout(new BorderLayout());
-        button = new Button("タイトルに戻る"); 
-        add("Center",button);
-        button.addActionListener(this);
+        backBtn = new Button("タイトルに戻る"); 
+        this.add("Center",backBtn);
+        backBtn.addActionListener(this);
     }
 
-    //ボタンが押されるとマークが書き込まれる
+    //ボタンが押されるとタイトルに戻る
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == button){ //ボタンがクリックされたイベント情報が入っている。オブジェクトaeはボタンがクリックされたときに生成
-            button.setLabel("○");
-        }
+        Frame frame = (Frame) getParent();
+        CardLayout cardLayout = (CardLayout) frame.getLayout();
+        cardLayout.first(frame);
+        
+        // if (ae.getSource() == backBtn){ //ボタンがクリックされたイベント情報が入っている。オブジェクトaeはボタンがクリックされたときに生成    
+        // }
     }
 }
