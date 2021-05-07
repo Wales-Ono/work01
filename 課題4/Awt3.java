@@ -19,7 +19,7 @@ public class Awt3{
 
         // 大枠のフレームを作成
         MyFrame flame = new MyFrame();
-        flame.setLayout(new BorderLayout());　//BorderLayoutで作成
+        flame.setLayout(new BorderLayout()); //BorderLayoutで作成
         flame.add("North",northPanel);
         flame.add("Center",centerPanel);
         flame.add("South",southPanel);
@@ -32,7 +32,7 @@ class MyFrame extends Frame {
     public MyFrame() {
         setSize(600, 600); //フレームサイズを指定
         setTitle("三目並べ"); //フレームにタイトルを付ける
-        addWindowListener(new MyWindowAdapter());　//リスナーで'×'が押されたか監視
+        addWindowListener(new MyWindowAdapter()); //リスナーで'×'が押されたか監視
     }
 }
 
@@ -63,4 +63,3 @@ class CenterPanel extends Panel implements ActionListener{
         }
     }
 }
-
