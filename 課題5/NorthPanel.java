@@ -12,6 +12,6 @@ public class NorthPanel extends Panel{
         this.setLayout(new GridLayout(0,1)); //グリッドレイアウト(一列ごとに改行)
         this.add(new Label("三目並べ")); 
         this.add(new Label("マークを書き込みたい場所をクリックしてください"));
-        this.add(cardPanel);　//上で作成したパネルを追加
+        this.add(cardPanel); //上で作成したパネルを追加
     }
 }

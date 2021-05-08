@@ -24,6 +24,7 @@ public class MyFrame extends Frame{
         gamePanel.add("Center",centerPanel);
         gamePanel.add("South",southPanel);
 
+        //カードレイアウトによる画面遷移
         Panel cardPanel = new Panel(); //パネルのインスタンスを作成
         CardLayout cardLayout = new CardLayout(); //カードレイアウトのインスタンスを作成
         cardPanel.setLayout(cardLayout); //作成したインスタンスを設定
