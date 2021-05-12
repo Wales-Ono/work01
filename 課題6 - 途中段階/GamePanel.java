@@ -51,11 +51,7 @@ public class GamePanel extends Panel implements ActionListener{
             if(ae.getSource() == button[i]){ //ボタンがクリックされたイベント情報が入っている。オブジェクトaeはボタンがクリックされたときに生成
                 if(count % 2 != 0){ //先攻のターン
                     button[i].setLabel("○");
-                    button[i].setEnabled(false);
-                    if(isWinJudge()){                 
-                        for(int j = 0;j < button.length;j++){
-                            button[j].setEnabled(false);
-                        }                        
+                    if(isWinJudge()){
                         label[7].setText("                 <先攻>の勝利です");
                         break;
                     }else if(isDrawJudge()){
@@ -65,22 +61,17 @@ public class GamePanel extends Panel implements ActionListener{
                     label[7].setText("                         <後攻>");              
                 }else{ //後攻のターン
                     button[i].setLabel("×");
-                    button[i].setEnabled(false);
                     if(isWinJudge()){            
-                        for(int j = 0;j < button.length;j++){
-                            button[j].setEnabled(false);
-                        }
                         label[7].setText("                 <後攻>の勝利です");
                         break;
                     }else if(isDrawJudge()){
                         label[7].setText("                     引き分けです！");
                         break;
-                    }              
-                    label[7].setText("                         <先攻>");                   
+                    }               
+                    label[7].setText("                         <先攻>");                    
                 }
             }
         }
-
     }
 
     boolean isWinJudge(){
@@ -89,13 +80,11 @@ public class GamePanel extends Panel implements ActionListener{
                 if(button[i].getLabel() == button[i+1].getLabel() && button[i].getLabel() == button[i+2].getLabel()){
                     return true;
                 }
-            }
-            if(i < 3 && (button[i].getLabel() != "")){ //縦一列
+            }else if(i < 3 && (button[i].getLabel() != "")){ //縦一列
                 if(button[i].getLabel() == button[i+3].getLabel() && button[i].getLabel() == button[i+6].getLabel()){
                     return true;
                 }
-            }
-            if(i == 4 && (button[i].getLabel() != "")){ //斜め一列
+            }else if(i == 4 && (button[i].getLabel() != "")){ //斜め一列
                 if(button[i].getLabel() == button[0].getLabel() && button[i].getLabel() == button[8].getLabel()){
                     return true;
                 }else if(button[i].getLabel() == button[2].getLabel() && button[i].getLabel() == button[6].getLabel()){
@@ -112,15 +101,6 @@ public class GamePanel extends Panel implements ActionListener{
                 return true;
         }
         return false;
-    }
-
-    void init(){
-        count = 0;
-        label[7].setText("                         <先攻>");
-        for(int i = 0; i < 9;i++){
-            button[i].setLabel("");
-            button[i].setEnabled(true);
-        }       
     }
 
     Button getBackBtn(){
