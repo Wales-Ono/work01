@@ -12,7 +12,6 @@ public class Awt3{
         // 真ん中のパネルを作成
         CenterPanel centerPanel = new CenterPanel(); 
 
-
         // 1番下のパネルを作成
         Panel southPanel = new Panel();
         southPanel.add("South",new Button("タイトルに戻る")); 

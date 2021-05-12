@@ -1,47 +1,39 @@
 import java.awt.*;
 import java.awt.event.*;
 
-public class MyFrame extends Frame implements ActionListener{
+public class MyFrame extends Frame{
     public static void main(String[] args) {
         MyFrame myFrame = new MyFrame(); //フレームのインスタンスを作成
         myFrame.setVisible(true); //画面を表示
     }
-    
-    Panel cardPanel;
-    CardLayout cardLayout;
 
-    public MyFrame() {
+    MyFrame() {
         setSize(600, 600); //フレームサイズを指定
         setTitle("三目並べ"); //フレームにタイトルを付ける
 
-        //タイトル画面を表示するパネルのインスタンスを作成
         TitlePanel titlePanel = new TitlePanel();
-        titlePanel.startBtn.addActionListener(this); //"スタート"ボタンが押されるか監視
+        GamePanel gamePanel = new GamePanel();
 
-        //ゲーム画面を表示するパネルのインスタンスを作成
-        Panel gamePanel = new Panel();
-        gamePanel.setLayout(new BorderLayout()); //ボーダーレイアウト
-        NorthPanel northPanel = new NorthPanel();
-        CenterPanel centerPanel = new CenterPanel();
-        SouthPanel southPanel = new SouthPanel();
-        gamePanel.add("North",northPanel);
-        gamePanel.add("Center",centerPanel);
-        gamePanel.add("South",southPanel);
 
         //カードレイアウトによる画面遷移
-        cardPanel = new Panel(); //パネルのインスタンスを作成
-        cardLayout = new CardLayout(); //カードレイアウトのインスタンスを作成
+        Panel cardPanel = new Panel(); //パネルのインスタンスを作成
+        CardLayout cardLayout = new CardLayout(); //カードレイアウトのインスタンスを作成
         cardPanel.setLayout(cardLayout); //作成したインスタンスを設定
         cardPanel.add(titlePanel,"titlePanel"); //cardPanelにタイトル画面のパネルを貼り付け
         cardPanel.add(gamePanel,"gamePanel"); //cardPanelにゲーム画面のパネルを貼り付け
         this.add(cardPanel); //大枠のフレームに cardPanel を追加
 
+        titlePanel.getStartBtn().addActionListener(ae -> {
+            cardLayout.next(cardPanel);
+        });
+
+        gamePanel.getBackBtn().addActionListener(ae -> {
+            cardLayout.next(cardPanel);
+        });
+        
         addWindowListener(new MyWindowAdapter()); //リスナーにより、フレームの'×'が押されたか監視
     }
 
-    public void actionPerformed(ActionEvent ae){
-        cardLayout.next(cardPanel);
-    }
 }
 
 class MyWindowAdapter extends WindowAdapter {

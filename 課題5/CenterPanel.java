@@ -17,9 +17,7 @@ public class CenterPanel extends Panel implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         for(int i = 0; i < 9;i++){
             if (ae.getSource() == button[i]){ //ボタンがクリックされたイベント情報が入っている。オブジェクトaeはボタンがクリックされたときに生成
-                if(i % 2 == 0){
-                    button[i].setLabel("○");
-                }
+                button[i].setLabel("○");
             }
         }
     }
