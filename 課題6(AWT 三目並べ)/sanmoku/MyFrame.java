@@ -56,6 +56,6 @@ class MyWindowAdapter extends WindowAdapter {
      * @param e ウィンドウイベント
      */    
     public void windowClosing(WindowEvent e) {
-        System.exit(0); 
+        System.exit(0); //画面を閉じる 
     }
 }
