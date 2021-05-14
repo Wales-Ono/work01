@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"GamePanel","h":"","u":""},{"l":"MyFrame","h":"","u":""},{"l":"MyWindowAdapter","h":"","u":""},{"l":"TitlePanel","h":"","u":""},{"l":"すべてのクラス","h":"","u":"allclasses-index.html"}]

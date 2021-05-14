@@ -37,10 +37,8 @@ public class TitlePanel extends Panel{
             }
         }
         
-        quitBtn.addActionListener(ae -> {
-            if(ae.getSource() == quitBtn){ //ボタン"やめる"が押されたとき
-                System.exit(0);
-            }
+        quitBtn.addActionListener(ae -> { //ボタン"やめる"が押されたときのイベント処理
+                System.exit(0); //画面を閉じる
         });
     }
 

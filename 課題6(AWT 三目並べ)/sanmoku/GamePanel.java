@@ -46,8 +46,8 @@ public class GamePanel extends Panel implements ActionListener{
         Panel centerPanel = new Panel();
         centerPanel.setLayout(new GridLayout(0,3)); //グリッドレイアウト で盤面を作成(横3列で改行)
         for(int i = 0; i < 9;i++){
-            button[i] = new Button(""); //空白文字のボタンを作成
-            centerPanel.add(button[i]); //ボタンを追加
+            button[i] = new Button(""); 
+            centerPanel.add(button[i]);
             button[i].addActionListener(this);
         }
         
@@ -57,7 +57,7 @@ public class GamePanel extends Panel implements ActionListener{
         southPanel.add(backBtn);
 
 
-        //全てまとめたgamePanel
+        //3つのパネルを集約したgamePanel
         this.setLayout(new GridLayout(0,1));
         this.add(northPanel);
         this.add(centerPanel);
@@ -71,17 +71,17 @@ public class GamePanel extends Panel implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         count++;
         for(int i = 0; i < button.length;i++){
-            if(ae.getSource() == button[i]){ //ボタンがクリックされたイベント情報が入っている。オブジェクトaeはボタンがクリックされたときに生成
+            if(ae.getSource() == button[i]){
                 if(count % 2 != 0){ //先攻のターン
-                    button[i].setLabel("○");
-                    button[i].setEnabled(false);
-                    if(isWinJudge()){                 
+                    button[i].setLabel("○"); //"○"を盤面に書き込み
+                    button[i].setEnabled(false); //押されたボタンを無効化
+                    if(isWinJudge()){ //勝ちかどうか判定
                         for(int j = 0;j < button.length;j++){
-                            button[j].setEnabled(false);
+                            button[j].setEnabled(false); //ボタンすべてを無効化
                         }                        
                         label[7].setText("                 <先攻>の勝利です");
                         break;
-                    }else if(isDrawJudge()){
+                    }else if(isDrawJudge()){ //引き分けかどうか判定
                         label[7].setText("                     引き分けです！");
                         break;
                     }
@@ -112,17 +112,17 @@ public class GamePanel extends Panel implements ActionListener{
      */
     public boolean isWinJudge(){
         for(int i = 0;i < 9;i++){
-            if(i % 3 == 0 && (button[i].getLabel() != "")){ //横一列
+            if(i % 3 == 0 && (button[i].getLabel() != "")){ //横一列の判定
                 if(button[i].getLabel() == button[i+1].getLabel() && button[i].getLabel() == button[i+2].getLabel()){
                     return true;
                 }
             }
-            if(i < 3 && (button[i].getLabel() != "")){ //縦一列
+            if(i < 3 && (button[i].getLabel() != "")){ //縦一列の判定
                 if(button[i].getLabel() == button[i+3].getLabel() && button[i].getLabel() == button[i+6].getLabel()){
                     return true;
                 }
             }
-            if(i == 4 && (button[i].getLabel() != "")){ //斜め一列
+            if(i == 4 && (button[i].getLabel() != "")){ //斜めの判定
                 if(button[i].getLabel() == button[0].getLabel() && button[i].getLabel() == button[8].getLabel()){
                     return true;
                 }else if(button[i].getLabel() == button[2].getLabel() && button[i].getLabel() == button[6].getLabel()){
@@ -153,7 +153,7 @@ public class GamePanel extends Panel implements ActionListener{
         label[7].setText("                         <先攻>");
         for(int i = 0; i < 9;i++){
             button[i].setLabel("");
-            button[i].setEnabled(true);
+            button[i].setEnabled(true); //盤面すべてのボタンを有効化
         }       
     }
     
