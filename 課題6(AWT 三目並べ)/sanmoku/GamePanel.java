@@ -57,11 +57,7 @@ public class GamePanel extends Panel implements ActionListener{
         southPanel.add(backBtn);
 
 
-<<<<<<< HEAD:課題6(AWT 三目並べ)/sanmoku/GamePanel.java
         //3つのパネルを集約したgamePanel
-=======
-        //作った3つのパネルをgamePanelに集約
->>>>>>> ff5d26811715f721cdb9ae266697e6c8c51c144b:課題6/sanmoku/GamePanel.java
         this.setLayout(new GridLayout(0,1));
         this.add(northPanel);
         this.add(centerPanel);
@@ -77,7 +73,6 @@ public class GamePanel extends Panel implements ActionListener{
         for(int i = 0; i < button.length;i++){
             if(ae.getSource() == button[i]){
                 if(count % 2 != 0){ //先攻のターン
-<<<<<<< HEAD:課題6(AWT 三目並べ)/sanmoku/GamePanel.java
                     button[i].setLabel("○"); //"○"を盤面に書き込み
                     button[i].setEnabled(false); //押されたボタンを無効化
                     if(isWinJudge()){ //勝ちかどうか判定
@@ -87,17 +82,6 @@ public class GamePanel extends Panel implements ActionListener{
                         label[7].setText("                 <先攻>の勝利です");
                         break;
                     }else if(isDrawJudge()){ //引き分けかどうか判定
-=======
-                    button[i].setLabel("○"); //盤面に"○"を記入
-                    button[i].setEnabled(false); //押したボタンを無効化
-                    if(isWinJudge()){ //勝ちかどうかを判定
-                        for(int j = 0;j < button.length;j++){
-                            button[j].setEnabled(false); //盤面すべてのボタンを無効化
-                        }                        
-                        label[7].setText("                 <先攻>の勝利です");
-                        break;
-                    }else if(isDrawJudge()){ //引き分けかどうかを判定
->>>>>>> ff5d26811715f721cdb9ae266697e6c8c51c144b:課題6/sanmoku/GamePanel.java
                         label[7].setText("                     引き分けです！");
                         break;
                     }
@@ -138,11 +122,7 @@ public class GamePanel extends Panel implements ActionListener{
                     return true;
                 }
             }
-<<<<<<< HEAD:課題6(AWT 三目並べ)/sanmoku/GamePanel.java
             if(i == 4 && (button[i].getLabel() != "")){ //斜めの判定
-=======
-            if(i == 4 && (button[i].getLabel() != "")){ //斜め一列の判定
->>>>>>> ff5d26811715f721cdb9ae266697e6c8c51c144b:課題6/sanmoku/GamePanel.java
                 if(button[i].getLabel() == button[0].getLabel() && button[i].getLabel() == button[8].getLabel()){
                     return true;
                 }else if(button[i].getLabel() == button[2].getLabel() && button[i].getLabel() == button[6].getLabel()){
@@ -173,11 +153,7 @@ public class GamePanel extends Panel implements ActionListener{
         label[7].setText("                         <先攻>");
         for(int i = 0; i < 9;i++){
             button[i].setLabel("");
-<<<<<<< HEAD:課題6(AWT 三目並べ)/sanmoku/GamePanel.java
             button[i].setEnabled(true); //盤面すべてのボタンを有効化
-=======
-            button[i].setEnabled(true); //盤面すべてを有効化
->>>>>>> ff5d26811715f721cdb9ae266697e6c8c51c144b:課題6/sanmoku/GamePanel.java
         }       
     }
     

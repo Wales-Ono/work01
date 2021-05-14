@@ -38,11 +38,7 @@ public class TitlePanel extends Panel{
         }
         
         quitBtn.addActionListener(ae -> { //ボタン"やめる"が押されたときのイベント処理
-<<<<<<< HEAD:課題6(AWT 三目並べ)/sanmoku/TitlePanel.java
-                System.exit(0); //画面を閉じる
-=======
             System.exit(0); //画面を閉じる
->>>>>>> ff5d26811715f721cdb9ae266697e6c8c51c144b:課題6/sanmoku/TitlePanel.java
         });
     }
 
@@ -61,5 +57,4 @@ public class TitlePanel extends Panel{
     public Button getQuitBtn(){
         return quitBtn;
     }
-
 }
