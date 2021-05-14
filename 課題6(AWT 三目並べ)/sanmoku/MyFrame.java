@@ -18,19 +18,19 @@ public class MyFrame extends Frame{
         GamePanel gamePanel = new GamePanel();
 
         //カードレイアウトによる画面遷移
-        Panel cardPanel = new Panel(); //パネルのインスタンスを作成
-        CardLayout cardLayout = new CardLayout(); //カードレイアウトのインスタンスを作成
-        cardPanel.setLayout(cardLayout); //作成したインスタンスを設定
-        cardPanel.add(titlePanel); //cardPanelにタイトル画面のパネルを貼り付け
-        cardPanel.add(gamePanel);
+        Panel cardPanel = new Panel();
+        CardLayout cardLayout = new CardLayout();
+        cardPanel.setLayout(cardLayout);
+        cardPanel.add(titlePanel); //cardPanelにtitlePanelを貼り付け
+        cardPanel.add(gamePanel); //cardPanelにgamePanelを貼り付け
         this.add(cardPanel); //大枠のフレームに cardPanel を追加
 
-        titlePanel.getStartBtn().addActionListener(ae -> { //スタート が押されると次のパネルへ
+        titlePanel.getStartBtn().addActionListener(ae -> { //スタート が押されたときのイベント処理
             gamePanel.init();
             cardLayout.next(cardPanel);
         });
 
-        gamePanel.getBackBtn().addActionListener(ae -> { //タイトルに戻る が押されると次のパネルへ
+        gamePanel.getBackBtn().addActionListener(ae -> { //タイトルに戻る が押されたときのイベント処理
             cardLayout.next(cardPanel);
         });
         
@@ -42,7 +42,7 @@ public class MyFrame extends Frame{
      * @param args 引数
      */
     public static void main(String[] args) {
-        MyFrame myFrame = new MyFrame(); //フレームのインスタンスを作成
+        MyFrame myFrame = new MyFrame();
         myFrame.setVisible(true); //画面を表示
     }
 }
@@ -56,6 +56,6 @@ class MyWindowAdapter extends WindowAdapter {
      * @param e ウィンドウイベント
      */    
     public void windowClosing(WindowEvent e) {
-        System.exit(0); 
+        System.exit(0); //画面を閉じる 
     }
 }
