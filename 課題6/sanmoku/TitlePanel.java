@@ -1,13 +1,27 @@
+package sanmoku;
+
 import java.awt.*;
 import java.awt.event.*;
 
-//タイトル画面のパネル作成
+/**
+ * タイトル画面をパネルに貼り付けます。
+ */
 public class TitlePanel extends Panel{
-    //"スタート"ボタンと"やめる"ボタンのインスタンスを作成
+    
+    /**
+     *　ボタン"スタート"
+     */
     private Button startBtn;
+    
+    /**
+     *　ボタン"やめる"
+     */
     private Button quitBtn;
 
-    TitlePanel(){
+    /**
+     * TitlePanelを構築します。
+     */
+    public TitlePanel(){
         this.setLayout(new GridLayout(0,3)); //横3列のグリッドレイアウト
         startBtn = new Button("スタート");
         quitBtn = new Button("やめる");
@@ -15,26 +29,34 @@ public class TitlePanel extends Panel{
             if(i == 4){
                 this.add(new Label("                        三目並べ")); //i=4 ラベルを貼り付け(空白で余白を埋める)
             }else if(i == 10){
-                this.add(startBtn); //i=10 "スタート"ボタンを設置
+                this.add(startBtn); //i=10 ボタン"スタート"を設置
             }else if(i == 16){
-                this.add(quitBtn); //i=16 "やめる"ボタンを設置
+                this.add(quitBtn); //i=16 ボタン"やめる"を設置
             }else{
                 this.add(new Label("")); //その他は空白文字にすることでレイアウトを調整
             }
         }
         
         quitBtn.addActionListener(ae -> {
-            if(ae.getSource() == quitBtn){ //"やめる"ボタンが押されたとき
+            if(ae.getSource() == quitBtn){ //ボタン"やめる"が押されたとき
                 System.exit(0);
             }
         });
     }
 
-    Button getStartBtn(){
+    /**
+     * ボタン"スタート"が押されたとき、ボタン"スタート"を返します。
+     * @return "スタート"
+     */
+    public Button getStartBtn(){
         return startBtn;
     }
 
-    Button getQuitBtn(){
+    /**
+     * ボタン"やめる"が押されたとき、ボタン"やめる"を返します。
+     * @return ボタン"やめる"
+     */
+    public Button getQuitBtn(){
         return quitBtn;
     }
 

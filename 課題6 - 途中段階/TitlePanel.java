@@ -1,13 +1,25 @@
 import java.awt.*;
 import java.awt.event.*;
 
-//タイトル画面のパネル作成
+/**
+ * タイトル画面のパネルを作成します。
+ */
 public class TitlePanel extends Panel{
-    //"スタート"ボタンと"やめる"ボタンのインスタンスを作成
+
+    /**
+     *　ボタン"スタート"を宣言します
+     */
     private Button startBtn;
+    
+    /**
+     *　ボタン"スタート"を宣言します
+     */
     private Button quitBtn;
 
-    TitlePanel(){
+    /**
+     * TitlePanelを構築します。
+     */
+    public TitlePanel(){
         this.setLayout(new GridLayout(0,3)); //横3列のグリッドレイアウト
         startBtn = new Button("スタート");
         quitBtn = new Button("やめる");
@@ -30,11 +42,19 @@ public class TitlePanel extends Panel{
         });
     }
 
-    Button getStartBtn(){
+    /**
+     * "スタート"ボタンが押されたとき、"スタート"ボタンを返します。
+     * @return "スタート"ボタン
+     */
+    public Button getStartBtn(){
         return startBtn;
     }
 
-    Button getQuitBtn(){
+    /**
+     * "やめる"ボタンが押されたとき、"やめる"ボタンを返します。
+     * @return "やめる"ボタン
+     */
+    public Button getQuitBtn(){
         return quitBtn;
     }
 

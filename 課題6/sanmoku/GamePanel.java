@@ -1,14 +1,33 @@
+package sanmoku;
+
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * ゲーム画面をパネルに貼り付けます。
+ */
 public class GamePanel extends Panel implements ActionListener{ 
-    Button backBtn;
-    String turn;
-    int count;
-    Label[] label = new Label[9];    
-    Button[] button = new Button[9];
+    /**
+     * ボタン"タイトルに戻る"を作成します。
+     */
+    private Button backBtn;
+    /**
+     * 盤面がクリックされた回数をカウントします。
+     */
+    private int count;
+    /**
+     * パネル上部に設置するためのラベルを作成します。
+     */    
+    private Label[] label = new Label[9];    
+    /**
+     * パネル中央に設置される盤面を作成するためのボタンを作成します。
+     */ 
+    private Button[] button = new Button[9];
 
-    GamePanel(){
+    /**
+     * GamePanelを構築します。
+     */
+    public GamePanel(){
         //上
         Panel northPanel = new Panel();
         northPanel.setLayout(new GridLayout(0,3));
@@ -45,6 +64,10 @@ public class GamePanel extends Panel implements ActionListener{
         this.add(southPanel);        
     }
 
+    /**
+     * 盤面のイベント処理をします。
+     * @param ae アクションイベント
+     */
     public void actionPerformed(ActionEvent ae) {
         count++;
         for(int i = 0; i < button.length;i++){
@@ -83,7 +106,11 @@ public class GamePanel extends Panel implements ActionListener{
 
     }
 
-    boolean isWinJudge(){
+    /**
+     * 勝者がいるかどうかを判定します。
+     * @return 縦,横,斜めのいずれか揃った場合にだけ、trueが返される
+     */
+    public boolean isWinJudge(){
         for(int i = 0;i < 9;i++){
             if(i % 3 == 0 && (button[i].getLabel() != "")){ //横一列
                 if(button[i].getLabel() == button[i+1].getLabel() && button[i].getLabel() == button[i+2].getLabel()){
@@ -106,7 +133,11 @@ public class GamePanel extends Panel implements ActionListener{
         return false;
     }
 
-    boolean isDrawJudge(){
+    /**
+     * 引き分けかどうかを判定します。
+     * @return 引き分けだった場合のみ、trueが返される
+     */
+    public boolean isDrawJudge(){
         if(button[0].getLabel() != "" && button[1].getLabel() != "" && button[2].getLabel() != "" && button[3].getLabel() != "" && button[4].getLabel() != "" &&
          button[5].getLabel() != "" && button[6].getLabel() != "" && button[7].getLabel() != "" && button[8].getLabel() != "" ) {
                 return true;
@@ -114,7 +145,10 @@ public class GamePanel extends Panel implements ActionListener{
         return false;
     }
 
-    void init(){
+    /**
+     * 盤面を初期化します。
+     */
+    public void init(){
         count = 0;
         label[7].setText("                         <先攻>");
         for(int i = 0; i < 9;i++){
@@ -122,8 +156,12 @@ public class GamePanel extends Panel implements ActionListener{
             button[i].setEnabled(true);
         }       
     }
-
-    Button getBackBtn(){
+    
+    /**
+     * ボタン"タイトルに戻る"が押されたとき、ボタン"タイトルに戻る"を返します。
+     * @return ボタン"タイトルに戻る"
+     */
+    public Button getBackBtn(){
         return backBtn;
     }
 }

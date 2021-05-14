@@ -1,2 +1,2 @@
-javac -encoding UTF-8 MyFrame.java
-java MyFrame
+javac -encoding UTF-8 sanmoku\MyFrame.java
+java sanmoku.MyFrame

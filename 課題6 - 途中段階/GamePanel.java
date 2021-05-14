@@ -1,14 +1,24 @@
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * ゲーム画面をパネルに貼り付けます。
+ */
 public class GamePanel extends Panel implements ActionListener{ 
-    Button backBtn;
-    String turn;
-    int count;
-    Label[] label = new Label[9];    
-    Button[] button = new Button[9];
+    /**
+     * フィールド
+     */
+    private Button backBtn;
+    private String turn;
+    private int count;
+    private Label[] label = new Label[9];    
+    private Button[] button = new Button[9];
 
-    GamePanel(){
+
+    /**
+     * GanePanelを構築します。
+     */
+    public GamePanel(){
         //上
         Panel northPanel = new Panel();
         northPanel.setLayout(new GridLayout(0,3));
@@ -44,7 +54,11 @@ public class GamePanel extends Panel implements ActionListener{
         this.add(centerPanel);
         this.add(southPanel);        
     }
-
+    
+    /**
+     * 盤面のイベント処理をします。
+     * @param ae アクションイベント
+     */
     public void actionPerformed(ActionEvent ae) {
         count++;
         for(int i = 0; i < button.length;i++){
@@ -73,8 +87,11 @@ public class GamePanel extends Panel implements ActionListener{
             }
         }
     }
-
-    boolean isWinJudge(){
+    /**
+     * 勝者を判断するメソッドです。
+     * 縦,横,斜めのいずれか揃った場合にだけ、trueが返される
+     */
+    public boolean isWinJudge(){
         for(int i = 0;i < 9;i++){
             if(i % 3 == 0 && (button[i].getLabel() != "")){ //横一列
                 if(button[i].getLabel() == button[i+1].getLabel() && button[i].getLabel() == button[i+2].getLabel()){
@@ -94,16 +111,22 @@ public class GamePanel extends Panel implements ActionListener{
         }
         return false;
     }
-
-    boolean isDrawJudge(){
+    /**
+     * 引き分けを判断するメソッドです。
+     * @return 引き分けだった場合にだけ、trueが返される
+     */
+    public boolean isDrawJudge(){
         if(button[0].getLabel() != "" && button[1].getLabel() != "" && button[2].getLabel() != "" && button[3].getLabel() != "" && button[4].getLabel() != "" &&
          button[5].getLabel() != "" && button[6].getLabel() != "" && button[7].getLabel() != "" && button[8].getLabel() != "" ) {
                 return true;
         }
         return false;
     }
-
-    Button getBackBtn(){
+    /**
+     * "タイトルに戻る"ボタンが押されたとき、"タイトルに戻る"ボタンを返します。
+     * @return "タイトルに戻る"ボタン
+     */
+    public Button getBackBtn(){
         return backBtn;
     }
 }
