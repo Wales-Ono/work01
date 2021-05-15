@@ -18,11 +18,11 @@ public class GamePanel extends Panel implements ActionListener{
     /**
      * パネル上部に設置するためのラベルを作成します。
      */    
-    private Label[] label = new Label[9];    
+    private Label[] label;    
     /**
      * パネル中央に設置される盤面を作成するためのボタンを作成します。
      */ 
-    private Button[] button = new Button[9];
+    private Button[] button;
 
     /**
      * GamePanelを構築します。
@@ -31,6 +31,7 @@ public class GamePanel extends Panel implements ActionListener{
         //上
         Panel northPanel = new Panel();
         northPanel.setLayout(new GridLayout(0,3));
+        label = new Label[9];
         for(int i = 0; i < 9;i++){
             if(i == 4){
                 label[i] = new Label("                        三目並べ");
@@ -45,6 +46,7 @@ public class GamePanel extends Panel implements ActionListener{
         //中央
         Panel centerPanel = new Panel();
         centerPanel.setLayout(new GridLayout(0,3)); //グリッドレイアウト で盤面を作成(横3列で改行)
+        button = new Button[9];
         for(int i = 0; i < 9;i++){
             button[i] = new Button(""); 
             centerPanel.add(button[i]);
