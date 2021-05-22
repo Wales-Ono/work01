@@ -1,6 +1,6 @@
-### 課題7
+## 課題7
 
-**三目並べの　Servletへの移植**
+**三目並べ　Servletへの移植**
       
 <作成資料>
 - [Servlet 環境構築について](https://docs.google.com/document/d/171mJoRhb-yySizwMkTSt6fURJMEQipqNmpC16qoZgGc/edit?usp=sharing)
