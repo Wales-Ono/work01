@@ -8,7 +8,8 @@ import java.awt.event.*;
  */
 public class GamePanel extends Panel implements ActionListener{ 
     /**
-     * ボタン"タイトルに戻る"を作成します。
+     * ボタン"タイトルに戻る"を作成します. 
+     * 
      */
     private Button backBtn;
     /**
