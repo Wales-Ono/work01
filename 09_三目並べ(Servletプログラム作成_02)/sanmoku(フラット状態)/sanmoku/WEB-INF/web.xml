@@ -24,11 +24,11 @@
 
   <servlet>
     <servlet-name>title</servlet-name>
-    <servlet-class>controller.TitleServlet</servlet-class>
+    <servlet-class>TitleServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>game</servlet-name>
-    <servlet-class>controller.GameServlet</servlet-class>
+    <servlet-class>GameServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>

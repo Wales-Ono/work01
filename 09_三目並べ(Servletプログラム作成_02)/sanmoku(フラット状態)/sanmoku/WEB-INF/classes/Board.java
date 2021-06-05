@@ -1,16 +1,16 @@
 import java.io.Serializable;
 
-public class Board implements Serializable {
+public class Board {
 	private String cells0;
 	private String cells1;
 	private String cells2;
 
     public Board(){};
-    public Board(String cells0,String cells1,String cells2) {
-    	this.cells0 = cells0;
-    	this.cells1 = cells1;
-    	this.cells2 = cells2;
-    }
+    // public Board(String cells0,String cells1,String cells2) {
+    // 	this.cells0 = cells0;
+    // 	this.cells1 = cells1;
+    // 	this.cells2 = cells2;
+    // }
 
 	public String getCells0(){
 		return cells0;
