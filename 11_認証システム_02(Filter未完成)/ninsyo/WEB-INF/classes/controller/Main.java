@@ -19,23 +19,18 @@ public class Main extends HttpServlet {
      * 権限メニューのリンクが押されたときの処理
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // セッションスコープの中身を取得        
-        HttpSession session = request.getSession(false);
-        
-        // session の有無を確認
-        if(session == null){
+        // HttpSessionインスタンス の取得
+        HttpSession session = request.getSession();
+
+        User user = (User) session.getAttribute("user");
+        int kengenNum = (int) session.getAttribute("kengenNum");
+
+        //権限により条件分岐させ画面遷移
+        if (kengenNum == 0){ //権限なしのときはログイン画面へリダイレクト
             response.sendRedirect("/ninsyo/login.jsp");
         } else {
-            User user = (User) session.getAttribute("user");
-            int kengenNum = (int) session.getAttribute("kengenNum");
-
-            //権限により条件分岐させ画面遷移
-            if (kengenNum == 0){ //権限なしのときはログイン画面へリダイレクト
-                response.sendRedirect("/ninsyo/login.jsp");
-            } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/main.jsp");
-                dispatcher.forward(request,response);
-            }
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/main.jsp");
+            dispatcher.forward(request,response);
         }
     }
 

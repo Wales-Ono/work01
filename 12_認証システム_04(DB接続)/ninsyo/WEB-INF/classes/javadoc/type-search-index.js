@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"LoginLogic","h":"","u":""},{"l":"User","h":"","u":""},{"l":"すべてのクラス","h":"","u":"allclasses-index.html"}]

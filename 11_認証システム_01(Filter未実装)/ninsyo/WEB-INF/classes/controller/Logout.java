@@ -5,7 +5,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 /**
- * 社員権限に関するリクエストを処理するコントローラ
+ * ログアウトに関するリクエストを処理するコントローラ
  * @author N.Ono
  */
 public class Logout extends HttpServlet {
