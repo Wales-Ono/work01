@@ -13,7 +13,9 @@ import dao.UserDAO;
  */
 public class Kengen extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    
+    public static final String KANRISYA = "kanrisya";
+    public static final String IPPAN = "ippan";
+
     /**
      * メインメニューのリンクが押されたときの処理
      */
@@ -34,15 +36,14 @@ public class Kengen extends HttpServlet {
         User user = (User) session.getAttribute("user");
         
         // actionの文字列により条件分岐
-        if (action.equals("ippan")){
+        if (action.equals(IPPAN)){
             RequestDispatcher dispatcher = request.getRequestDispatcher("/ippan.jsp");
             dispatcher.forward(request,response);
-        } else if (action.equals("kanrisya")){
+        } else if (action.equals(KANRISYA)){
             // 管理者以外のときはメインメニュー、管理者のときは管理者権限画面へ
             if(user.getAuthId() == 1){
-
-                UserDAO userDao = new UserDAO();
-                List<User> userList = userDao.getUserList();
+                // ユーザーリストを作成し、セッションにセット
+                List<User> userList = UserDAO.getUserList();
                 request.setAttribute("userList",userList);
 
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/kanrisya.jsp");

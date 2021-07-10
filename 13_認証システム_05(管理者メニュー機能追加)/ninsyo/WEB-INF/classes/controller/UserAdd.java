@@ -35,18 +35,14 @@ public class UserAdd extends HttpServlet {
     protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
-        User user = new User();
         String addName = request.getParameter("addName");
         String addUserId = request.getParameter("addUserId");
         String addUserPw = request.getParameter("addUserPw");
         String addAuthId = request.getParameter("addAuthId");
-        user.setName(addName);
-        user.setUserId(addUserId);
-        user.setUserPw(addUserPw);
-        user.setAuthId(Integer.parseInt(addAuthId));
 
-        UserDAO userDao = new UserDAO();
-        userDao.userAdd(user);
+        User user = new User(addName,addUserId,addUserPw,Integer.parseInt(addAuthId));
+
+        UserDAO.userAdd(user);
 
         response.sendRedirect("/ninsyo/main");
     }

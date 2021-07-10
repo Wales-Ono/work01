@@ -46,17 +46,11 @@ public class UserEdit extends HttpServlet {
         HttpSession session = request.getSession();
         User selectUser = (User) session.getAttribute("selectUser");
 
-        // User型のインスタンスを作成し入力内容をセット
-        User user = new User();
         String editName = request.getParameter("editName");
         String editUserId = request.getParameter("editUserId");
         String editUserPw = request.getParameter("editUserPw");
         String editAuthId = request.getParameter("editAuthId");
-        user.setId(selectUser.getId());
-        user.setName(editName);
-        user.setUserId(editUserId);
-        user.setUserPw(editUserPw);
-        user.setAuthId(Integer.parseInt(editAuthId));
+        User user = new User(selectUser.getId(),editName,editUserId,editUserPw,Integer.parseInt(editAuthId));
 
         // DB側の情報を書き換え
         UserDAO.userEdit(user);

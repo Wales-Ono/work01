@@ -7,8 +7,8 @@
 <title>メイン画面</title>
 <body>
 <h1>メインメニュー</h1><br>
-一般ページは<a href="/ninsyo/kengen?action=ippan">こちら</a>をクリック<br>
-管理者ページは<a href="/ninsyo/kengen?action=kanrisya">こちら</a>をクリック<br><br>
+一般メニューは<a href="/ninsyo/kengen?action=ippan">こちら</a>をクリック<br>
+管理者メニューは<a href="/ninsyo/kengen?action=kanrisya">こちら</a>をクリック<br><br>
 <a href="/ninsyo/logout">ログアウト</a>
 </body>
 </head>
