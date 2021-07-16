@@ -1,0 +1,6 @@
+// デバック確認用コード
+// response.setContentType("text/html; charset=UTF-8;");
+// PrintWriter out = response.getWriter();
+// out.println("<html><body>");
+// out.println();
+// out.println("</body></html>");
