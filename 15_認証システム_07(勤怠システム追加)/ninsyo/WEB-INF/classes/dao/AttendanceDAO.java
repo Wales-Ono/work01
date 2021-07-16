@@ -115,10 +115,16 @@ public class AttendanceDAO {
         DataSource ds = (DataSource)initialContext.lookup("java:comp/env/jdbc/NinsyoDB");
         Connection con = ds.getConnection();
 
+        // 現在時刻を取得し、秒以下を切り捨てる
+        LocalTime getNowTime = LocalTime.now();
+        LocalTime localNowTime = LocalTime.of(getNowTime.getHour(),getNowTime.getMinute(),0);
+        java.sql.Time nowTime = java.sql.Time.valueOf(localNowTime);
+
         // 日付"date" と 出勤時刻"begin" を打刻
-        String sql = "INSERT INTO attendances (id,date,begin) values (?,CURDATE(),CURTIME());";
+        String sql = "INSERT INTO attendances (id,date,begin) values (?,CURDATE(),?);";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1,id);
+        ps.setTime(2,nowTime);
         ps.executeUpdate();
 
         ps.close();
@@ -137,10 +143,16 @@ public class AttendanceDAO {
         DataSource ds = (DataSource)initialContext.lookup("java:comp/env/jdbc/NinsyoDB");
         Connection con = ds.getConnection();
 
+        // 現在時刻を取得し、秒以下を切り捨てる
+        LocalTime getNowTime = LocalTime.now();
+        LocalTime localNowTime = LocalTime.of(getNowTime.getHour(),getNowTime.getMinute(),0);
+        java.sql.Time nowTime = java.sql.Time.valueOf(localNowTime);
+
         // 退勤時刻"end"を打刻
-        String sql = "UPDATE attendances SET end=CURTIME() WHERE id=? AND date=CURDATE();";
+        String sql = "UPDATE attendances SET end=? WHERE id=? AND date=CURDATE();";
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setInt(1,id);
+        ps.setTime(1,nowTime);
+        ps.setInt(2,id);
         ps.executeUpdate();
 
         ps.close();
