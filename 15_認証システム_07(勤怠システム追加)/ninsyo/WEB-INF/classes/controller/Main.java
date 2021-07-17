@@ -11,11 +11,15 @@ import javax.naming.*;
 import dao.UserDAO;
 import dao.AttendanceDAO;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * ログインに関するリクエストを処理するコントローラ
  * @author N.Ono
  */
 public class Main extends HttpServlet {
+    static Logger logger = LogManager.getLogger(Main.class);
     private static final long serialVersionUID = 1L;
     
     /**
@@ -56,8 +60,7 @@ public class Main extends HttpServlet {
                     dispatcher.forward(request,response);
                 }
             } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
-                dispatcher.forward(request,response);
+                // 何もしない
             }
 
             // 勤務一覧を取得し、セッションスコープにセット
@@ -67,6 +70,14 @@ public class Main extends HttpServlet {
             // 今日の日付の勤怠を取得し、セッションスコープにセット
             Attendance attendanceToday = AttendanceDAO.getAttedanceToday(user.getId());
             session.setAttribute("attendanceToday",attendanceToday);
+
+            // ログの記述
+            logger.trace("_trace");
+            logger.debug("_debug");
+            logger.info("_info");
+            logger.warn("_warn");
+            logger.error("_error");
+            logger.fatal("_fatal");
 
             // メインメニューへ
             RequestDispatcher dispatcher = request.getRequestDispatcher("/main.jsp");
@@ -111,15 +122,6 @@ public class Main extends HttpServlet {
                     // 今日の日付の勤怠を取得し、セッションスコープにセット
                     Attendance attendanceToday = AttendanceDAO.getAttedanceToday(findUser.getId());
                     session.setAttribute("attendanceToday",attendanceToday);
-
-                    // デバック確認用コード
-                    // response.setContentType("text/html; charset=UTF-8;");
-                    // PrintWriter out = response.getWriter();
-                    // out.println("<html><body>");
-                    // out.println(findUser.getId());
-                    // out.println("aaa");
-                    // out.println(attendanceToday);
-                    // out.println("</body></html>");
 
                     // メインメニューへ
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/main.jsp");

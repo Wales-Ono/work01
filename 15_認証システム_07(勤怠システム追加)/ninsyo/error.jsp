@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1>エラー</h1><br>
-<a href="/ninsyo/main.jsp">メインメニューへ</a>
+<a href="/ninsyo/main">メインメニューへ</a>
 </body>
 </html>
